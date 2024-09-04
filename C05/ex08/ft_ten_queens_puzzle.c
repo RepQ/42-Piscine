@@ -6,7 +6,7 @@
 /*   By: santi <santi@itb>                          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 16:21:57 by santi             #+#    #+#             */
-/*   Updated: 2024/09/04 21:05:25 by santi            ###   ########.fr       */
+/*   Updated: 2024/09/04 21:55:14 by santi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,22 @@
 
 int	is_safe(int table[10][10], int row, int col)
 {
-	int	k;
-	int	h;
 	int	j;
 	int	i;
 
-	k = -1;
-	h = -1;
-	while (++k < 10)
-		if (table[row][k] || table[k][col])
+	i = -1;
+	while (++i < col)
+		if (table[row][i])
 			return (0);
-	k = row;
-	h = col;
 	j = -1;
 	i = -1;
-	while ((k - (++i)) >= 0 && (h - (++j)) >= 0)
-		if (table[k - i][h - j])
+	while ((row - (++i)) >= 0 && (col - (++j)) >= 0)
+		if (table[row - i][col - j])
 			return (0);
 	i = -1;
 	j = -1;
-	while ((k + (++i)) <= 9 && (h - (++j)) >= 0)
-		if (table[k + i][h - j])
+	while ((row + (++i)) <= 9 && (col - (++j)) >= 0)
+		if (table[row + i][col - j])
 			return (0);
 	return (1);
 }
